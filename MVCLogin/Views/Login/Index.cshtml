@@ -1,0 +1,68 @@
+﻿@model MVCLogin.Models.User
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+    <style>
+        #login-div{
+            position:absolute;
+            left:40%;
+            top:20%;
+            border:2px solid #ccc;
+            padding:50px 50px;
+            color:brown;
+        }
+        .field-validation-valid{
+            color:red;
+        }
+    </style>
+</head>
+<body>
+    <div id="login-div">
+           @using (Html.BeginForm("Authorize", "Login", FormMethod.Post))
+            {
+                <table>
+                    <tr>
+                        <td></td>
+                        <td style="text-decoration:underline"><h1>Login</h1></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            @Html.LabelFor(Model => Model.UserName)
+                        </td>
+                        
+                        <td>
+                            @Html.EditorFor(Model => Model.UserName)
+                        </td>
+                    </tr>
+                    <tr><td><br /></td></tr>
+
+                    <tr>
+                        <td>@Html.LabelFor(Model => Model.Password)</td>
+                        <td>@Html.EditorFor(Model => Model.Password)</td>
+                    </tr>
+                   
+                    <tr>
+                        <td colspan="2">
+                            <label class="field-validation-valid">@Html.DisplayFor(Model=>Model.LoginErrorMessage)</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        
+                        <td></td>
+                        <td><br />
+                            <input type="submit" name="name" value="Login" />
+                            <input type="reset" name="name" value="Clear" />
+                        </td>
+                    </tr>
+                </table>
+            }
+        </div>
+</body>
+</html>
